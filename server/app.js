@@ -2,16 +2,17 @@
  * @Description: 
  * @Author: Bugmakerrrr
  * @Date: 2021-09-01 20:40:54
- * @LastEditors: Bugmakerrrr
- * @LastEditTime: 2021-09-01 23:06:37
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-09-02 17:23:38
  */
 const Koa = require('koa')
 const app = new Koa()
 
-app.use(async ctx => {
-  ctx.body = 'Hello vue-chat'
-})
+const config = require('../config')
+const routers = require('./routers/apis')
 
-app.listen(3001, () => {
+app.use(routers.routes()).use(routers.allowedMethods())
+
+app.listen(config.port, () => {
   console.log('[vue-chat] starting')
 })

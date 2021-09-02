@@ -2,17 +2,17 @@
  * @Descripttion:
  * @Author: Lijia Lin
  * @Date: 2021-09-01 16:14:10
- * @LastEditTime: 2021-09-01 16:34:18
+ * @LastEditTime: 2021-09-02 13:44:17
  */
-const getSqlContentMap = require('./util/get-sql-content-map');
-const { query } = require('./util/db');
+const getSqlContentMap = require('./utils/get-sql-content-map');
+const { query } = require('./utils/db');
 
 // 打印脚本执行日志
 const eventLog = function (err, sqlFile, index) {
   if (err) {
-    console.log(`[ERROR] sql脚本文件: ${sqlFile} 第${index + 1}条脚本 执行失败 o(╯□╰)o ！`);
+    console.log(`[ERROR] ${sqlFile}: 第${index + 1}条脚本 执行失败！`);
   } else {
-    console.log(`[SUCCESS] sql脚本文件: ${sqlFile} 第${index + 1}条脚本 执行成功 O(∩_∩)O !`);
+    console.log(`[SUCCESS] ${sqlFile}: 第${index + 1}条脚本 执行成功!`);
   }
 };
 
@@ -37,7 +37,7 @@ const createAllTables = async () => {
     }
   }
   console.log('sql脚本执行结束！');
-  console.log('请按 ctrl + c 键退出！');
+  console.log('请按 ctrl + c 键退出！')
 };
 
 createAllTables();

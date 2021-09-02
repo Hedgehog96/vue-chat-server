@@ -2,7 +2,7 @@
  * @Descripttion:
  * @Author: Lijia Lin
  * @Date: 2021-09-01 16:29:40
- * @LastEditTime: 2021-09-01 16:33:48
+ * @LastEditTime: 2021-09-02 13:35:19
  */
 const fs = require('fs');
 
@@ -22,7 +22,7 @@ const walkFile = function (path, mime) {
     let itemMime = itemArr.length > 1 ? itemArr[itemArr.length - 1] : 'undefined';
     let keyName = item + '';
     if (mime === itemMime) {
-      fileList[item] = pathResolve + item;
+      fileList[item] = path + item;
     }
   }
 
