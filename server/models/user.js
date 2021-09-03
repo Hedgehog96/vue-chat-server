@@ -2,7 +2,7 @@
  * @Descripttion: 
  * @Author: Lijia Lin
  * @Date: 2021-09-02 14:12:00
- * @LastEditTime: 2021-09-02 17:01:31
+ * @LastEditTime: 2021-09-03 13:48:37
  */
 const dbUtils = require('../utils/db')
 
@@ -42,7 +42,7 @@ const user = {
    */
    async getUserByUsernameAndPassword(options) {
     const _sql = `
-    SELECT * FROM users where password='${options.password}' and name='${options.name}'
+    SELECT * FROM users where password='${options.password}' and username='${options.username}'
     `
     let result = await dbUtils.query(_sql)
     if (Array.isArray(result) && result.length > 0) {

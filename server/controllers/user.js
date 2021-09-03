@@ -2,8 +2,10 @@
  * @Descripttion: 
  * @Author: Lijia Lin
  * @Date: 2021-09-02 16:46:02
- * @LastEditTime: 2021-09-02 17:18:12
+ * @LastEditTime: 2021-09-03 15:56:50
  */
+const jwt = require('jsonwebtoken')
+const config = require('../../config')
 const userCodes = require('./../codes/user')
 const userModels = require('../models/user')
 
@@ -13,23 +15,32 @@ module.exports = {
    * @param {object} ctx 上下文对象
    */
   async signIn(ctx) {
-    const formData = ctx.request.body
     const resp = {
-      success: false,
-      message: '',
-      data: null,
-      code: ''
+      message: '登录成功',
+      data: {},
+      code: 2000,
+      token: ''
+    }
+    try {
+      const formData = ctx.request.body
+      const userResp = await userModels.getUserByUsernameAndPassword({ ...formData })
+      if (userResp) {
+        if (formData.username === userResp.username) {
+          resp.token = jwt.sign(formData, config.secret, { expiresIn: '1h' })
+        } else {
+          resp.message = userCodes[2002]
+          resp.code = 2002
+        }
+      }
+      else {
+        resp.message = userCodes[2004]
+        resp.code = 2004
+      }
+    } catch {
+      resp.message = userCodes.ERROR_SYS
+      resp.code = 'ERROR_SYS'
     }
 
-    // const userResp = await userModels.getUserByUsernameAndPassword({ ...formData })
-    // if (userResp) {
-    //   resp.success = true
-    // }
-    // else {
-    //   resp.message = userCodes.FAIL_USER_NAME_OR_PASSWORD_ERROR
-    //   resp.code = 'FAIL_USER_NAME_OR_PASSWORD_ERROR'
-    // }
-
-    return resp
+    return ctx.body = resp
   }
 }

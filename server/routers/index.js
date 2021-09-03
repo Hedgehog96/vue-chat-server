@@ -1,13 +1,13 @@
 /*
  * @Descripttion: 
  * @Author: Lijia Lin
- * @Date: 2021-09-02 17:26:17
- * @LastEditTime: 2021-09-02 17:26:18
+ * @Date: 2021-09-02 17:19:36
+ * @LastEditTime: 2021-09-03 14:49:30
  */
 const router = require('koa-router')()
+const userController = require('../controllers/user')
 
-const api = require('./api')
+const routers = router
+  .post('/api/signIn', userController.signIn)
 
-router.use('/api', api.routes(), api.allowedMethods())
-
-module.exports = router
+module.exports = routers

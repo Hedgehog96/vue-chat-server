@@ -2,33 +2,33 @@
  * @Descripttion: 
  * @Author: Lijia Lin
  * @Date: 2021-09-02 16:56:27
- * @LastEditTime: 2021-09-02 16:56:28
+ * @LastEditTime: 2021-09-03 14:49:20
  */
-/**
- * 逻辑文案管理
- */
+// 1001～1999 区间表示参数错误
+// 2001～2999 区间表示用户错误
+// 3001～3999 区间表示接口异常
 
- const codes = {
+const codes = {
+  1: '操作成功',
 
-  ERROR_USER_NAME: '用户名格式为6-16位的小写字母，包括-、_',
+  1003: '用户名格式为6-16位的小写字母，包括-、_',
 
-  ERROR_EMAIL: '请输入正确的邮箱地址',
+  1004: '密码长度应该为6-16',
 
-  ERROR_PASSWORD: '密码长度应该为6-16',
+  1005: '两次密码不一致',
 
-  ERROR_PASSWORD_CONFORM: '两次密码不一致',
+  2000: '登录成功',
 
-  ERROR_SYS: '系统错误',
+  2001: '用户名已被注册',
 
-  FAIL_USER_NAME_IS_EXIST: '用户名已被注册',
+  2002: '用户名或登录密码错误',
 
-  FAIL_USER_NAME_OR_PASSWORD_ERROR: '用户名或登录密码错误',
+  2003: '用户未登录',
 
-  FAIL_USER_NO_LOGIN: '用户未登录',
+  2004: '用户不存在',
 
-  FAIL_USER_NO_EXIST: '用户不存在',
+  3001: '系统错误',
 
 }
-
 
 module.exports = codes
