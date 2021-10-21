@@ -1,8 +1,8 @@
 /*
  * @Descripttion:
- * @Author: Lijia Lin
+ * @Author: Bugmakerrrr
  * @Date: 2021-09-01 16:21:20
- * @LastEditTime: 2021-09-01 16:29:11
+ * @LastEditTime: 2021-09-08 17:59:24
  */
 const mysql = require('mysql');
 const config = require('../../config');

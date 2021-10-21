@@ -1,8 +1,8 @@
 /*
  * @Descripttion: 
- * @Author: Lijia Lin
+ * @Author: Bugmakerrrr
  * @Date: 2021-09-02 16:46:02
- * @LastEditTime: 2021-09-03 15:56:50
+ * @LastEditTime: 2021-09-08 18:26:20
  */
 const jwt = require('jsonwebtoken')
 const config = require('../../config')
@@ -17,24 +17,28 @@ module.exports = {
   async signIn(ctx) {
     const resp = {
       message: '登录成功',
-      data: {},
       code: 2000,
       token: ''
     }
     try {
       const formData = ctx.request.body
-      const userResp = await userModels.getUserByUsernameAndPassword({ ...formData })
-      if (userResp) {
-        if (formData.username === userResp.username) {
-          resp.token = jwt.sign(formData, config.secret, { expiresIn: '1h' })
-        } else {
-          resp.message = userCodes[2002]
-          resp.code = 2002
+      if (formData && formData.username) {
+        const userResp = await userModels.getUserByUsernameAndPassword({ ...formData })
+        if (userResp) {
+          if (formData.username === userResp.username) {
+            resp.token = jwt.sign(formData, config.secret, { expiresIn: '1h' })
+          } else {
+            resp.message = userCodes[2002]
+            resp.code = 2002
+          }
         }
-      }
-      else {
-        resp.message = userCodes[2004]
-        resp.code = 2004
+        else {
+          resp.message = userCodes[2004]
+          resp.code = 2004
+        }
+      } else {
+        resp.message = userCodes[1001]
+        resp.code = 1001
       }
     } catch {
       resp.message = userCodes.ERROR_SYS

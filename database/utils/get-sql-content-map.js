@@ -1,8 +1,8 @@
 /*
  * @Descripttion:
- * @Author: Lijia Lin
+ * @Author: Bugmakerrrr
  * @Date: 2021-09-01 16:33:29
- * @LastEditTime: 2021-09-01 16:33:30
+ * @LastEditTime: 2021-09-08 18:00:15
  */
 const fs = require('fs');
 const getSqlMap = require('./get-sql-map');

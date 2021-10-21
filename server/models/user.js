@@ -1,8 +1,8 @@
 /*
  * @Descripttion: 
- * @Author: Lijia Lin
+ * @Author: Bugmakerrrr
  * @Date: 2021-09-02 14:12:00
- * @LastEditTime: 2021-09-03 13:48:37
+ * @LastEditTime: 2021-09-11 10:09:50
  */
 const dbUtils = require('../utils/db')
 
@@ -24,7 +24,7 @@ const user = {
    */
   async getUserByUsername(username) {
     const _sql = `
-    SELECT * FROM users WHERE username='${username}'
+      SELECT * FROM users WHERE username='${username}'
     `
     let result = await dbUtils.query(_sql)
     if (Array.isArray(result) && result.length > 0) {
