@@ -2,7 +2,7 @@
  * @Descripttion: 
  * @Author: Bugmakerrrr
  * @Date: 2021-09-02 16:46:02
- * @LastEditTime: 2021-09-08 18:26:20
+ * @LastEditTime: 2021-11-08 23:28:09
  */
 const jwt = require('jsonwebtoken')
 const config = require('../../config')
@@ -20,6 +20,7 @@ module.exports = {
       code: 2000,
       token: ''
     }
+
     try {
       const formData = ctx.request.body
       if (formData && formData.username) {
@@ -46,5 +47,21 @@ module.exports = {
     }
 
     return ctx.body = resp
+  },
+
+  /**
+   * 注册
+   */
+   async signUp(ctx) {
+    const resp = {
+      message: '注册成功',
+      code: 2001,
+    }
+
+    try {
+      console.log(ctx.request.body)
+    }
+    catch {}
+    return ctx.body = {}
   }
 }
